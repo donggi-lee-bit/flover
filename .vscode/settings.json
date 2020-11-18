@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "/Users/jeon/Desktop/flover/env/bin/python",
+    "python.linting.pylintArgs": ["--load-plugins", "pylint_django"]
+}

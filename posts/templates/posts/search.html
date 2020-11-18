@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<form action ="{% url 'posts:search_result' %}" method = "POST">
+    {% csrf_token %}
+    
+    <p class="text-success"> *** KEYWORD 검색 부분 *** </p>
+    {% for keyword in keywords %}
+        <input type = "checkbox" name = "keyword_op" id = "{{keyword.name}}" value = "{{keyword.name}}">
+        <label for = {{keyword.name}}> {{keyword.name}} </label>
+    {% endfor %}
+
+    <p class="text-success"> *** COLOR 검색 부분 *** </p>
+
+    {% for flowercolor in flowercolors %}
+    <input type = "checkbox" name = "flowercolor_op" id = "{{flowercolor.name}}" value = "{{flowercolor.name}}">
+    <label for = {{flowercolor.name}}> {{flowercolor.name}} </label>
+    {% endfor %}
+
+    <p class="text-success"> *** TYPE 검색 부분 *** </p>
+    {% for flowertype in flowertypes %}
+    <input type = "checkbox" name = "flowertype_op" id = "{{flowertype.name}}" value = "{{flowertype.name}}">
+    <label for = {{flowertype.name}}> {{flowertype.name}} </label>
+    {% endfor %}</br>
+
+    <input class="btn btn-outline-success p-3 px-md-5" type = "submit" value = "검색"/> 
+</form>
+    
+{% endblock %}

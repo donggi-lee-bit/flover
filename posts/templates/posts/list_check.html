@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+
+{% endblock %}
+
+{% block content %}
+    <h1> FLOWER list </h1>
+
+    {% if items %}
+    <table class="table">
+        <thead>
+            <tr class="table-info">
+                <th> # </th>
+                <th> NAME </th>
+                <th> INFO </th>
+                <th> IMG </th>
+                <th> KEYWORDS </th>
+                <th> COLORS </th>
+                <th> TYPES </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <th> {{item.id}} </th>
+                <td> {{item.name}}</td>
+                <td> {{item.info}}</td>
+                <td> <img src = "{{item.image.url}}" alt = "FLOWER_IMAGE" /> </td>
+                <td> 
+                    {% for keyword in item.tagged_keywords.all %}
+                        {{ keyword.name }}<br>
+                    {% endfor %}    
+                </td>
+                <td> 
+                    {% for color in item.tagged_colors.all %}
+                        {{ color.name }}<br>
+                    {% endfor %}    
+                </td>
+                <td> 
+                    {% for type in item.tagged_types.all %}
+                        {{ type.name }}<br>
+                    {% endfor %}    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+    {% endif %}
+
+{% endblock %}
